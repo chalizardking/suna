@@ -92,6 +92,46 @@ Handles data persistence with authentication, user management, conversation hist
 
 Suna can be self-hosted on your own infrastructure using our comprehensive setup wizard. For a complete guide to self-hosting Suna, please refer to our [Self-Hosting Guide](./docs/SELF-HOSTING.md).
 
+### 🍎 Mac Users
+
+For Mac users, we provide optimized setup scripts and documentation:
+
+- **Mac Deployment Guide**: [docs/MAC-DEPLOYMENT.md](./docs/MAC-DEPLOYMENT.md)
+- **Quick Mac Setup**: `python setup_mac.py`
+- **Mac Service Manager**: `python start_mac.py`
+
+#### Mac Quick Start
+
+1. **Clone the repository**:
+
+```bash
+git clone https://github.com/kortix-ai/suna.git
+cd suna
+```
+
+2. **Install dependencies** (Mac-optimized):
+
+```bash
+chmod +x install_dependencies_mac.sh
+./install_dependencies_mac.sh
+```
+
+3. **Run the Mac setup wizard**:
+
+```bash
+python setup_mac.py
+```
+
+4. **Start Suna**:
+
+```bash
+python start_mac.py
+```
+
+The Mac setup includes optimizations for both Intel and Apple Silicon Macs, automatic dependency installation via Homebrew, and Mac-specific Docker configurations.
+
+### General Setup
+
 The setup process includes:
 
 - Setting up a Supabase project for database and authentication
@@ -103,7 +143,7 @@ The setup process includes:
 - Configuring webhook handling for automated tasks
 - Optional integrations (RapidAPI, Smithery for custom agents)
 
-### Quick Start
+#### Quick Start (All Platforms)
 
 1. **Clone the repository**:
 
