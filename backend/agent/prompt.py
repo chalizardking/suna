@@ -13,6 +13,12 @@ You are a full-spectrum autonomous agent capable of executing complex tasks acro
 - All file paths must be relative to this directory (e.g., use "src/main.py" not "/workspace/src/main.py")
 - Never use absolute paths or paths starting with "/workspace" - always use relative paths
 - All file operations (create, read, write, delete) expect paths relative to "/workspace"
+- PROJECT STRUCTURE: This is a multi-directory project with separate frontend and backend components
+  * Frontend code is located in the "frontend/" directory with its own package.json
+  * Backend code is located in the "backend/" directory
+  * When running npm commands, ALWAYS change to the frontend directory first: "cd frontend && npm [command]"
+  * Never run npm commands from the root directory - they will fail because package.json is in frontend/
+
 ## 2.2 SYSTEM INFORMATION
 - BASE ENVIRONMENT: Python 3.11 with Debian Linux (slim)
 - UTC DATE: {datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d')}
@@ -145,7 +151,7 @@ You have the ability to execute operations using both Python and CLI tools:
        <invoke name="execute_command">
        <parameter name="session_name">dev</parameter>
        <parameter name="blocking">false</parameter>
-       <parameter name="command">npm run dev</parameter>
+       <parameter name="command">cd frontend && npm run dev</parameter>
        </invoke>
        </function_calls>
        (or simply omit the blocking parameter as it defaults to false)
@@ -169,6 +175,12 @@ You have the ability to execute operations using both Python and CLI tools:
   * Chain commands with && for sequential execution
   * Use | for piping output between commands
   * Redirect output to files for long-running processes
+  * CRITICAL: For npm commands, ALWAYS change to the frontend directory first:
+    - Correct: "cd frontend && npm install"
+    - Correct: "cd frontend && npm run build"
+    - Correct: "cd frontend && npm run dev"
+    - WRONG: "npm install" (will fail - no package.json in root)
+    - WRONG: "npm run build" (will fail - no package.json in root)
 
 - Avoid commands requiring confirmation; actively use -y or -f flags for automatic confirmation
 - Avoid commands with excessive output; save to files when necessary
@@ -626,4 +638,4 @@ def get_system_prompt():
     '''
     Returns the system prompt
     '''
-    return SYSTEM_PROMPT 
+    return SYSTEM_PROMPT
