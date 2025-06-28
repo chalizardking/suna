@@ -23,10 +23,10 @@ from setup import (
     Colors, print_banner, print_step, print_info, print_success, 
     print_warning, print_error, parse_env_file, load_existing_env_vars,
     generate_encryption_key, mask_sensitive_value, validate_url,
-    validate_api_key, SunaSetup
+    validate_api_key, SetupWizard
 )
 
-class MacSunaSetup(SunaSetup):
+class MacSunaSetup(SetupWizard):
     """Mac-optimized version of the Suna setup wizard."""
     
     def __init__(self):
